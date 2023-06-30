@@ -1,0 +1,58 @@
+<%- include('header') %>
+<style>
+    a button{
+        background-color: dodgerblue;
+        color: aliceblue;
+        border: none;
+        margin: 20px;
+        border-radius: 5px;
+        padding: 10px;
+    }
+    .blog{
+        width: 300px;
+        height: auto;
+        text-align: center;
+        border-radius: 10px;
+        overflow: hidden;
+        margin: 15px;
+        border: 2px solid #000;
+    }
+    .blogContain{
+        padding: 10px;
+    }
+    .blogImg img{
+        width: 300px;
+        height: 250px;
+        object-fit: cover;
+        object-position: center;
+    }
+    .blogContain p{
+        margin: 10px;
+    }
+    .blogBox{
+        display: flex;
+        flex-wrap: wrap;
+        margin: 10px;
+    }
+</style>
+<div class="blogBox">
+    <% blogdata.map((val)=>{
+        const {id,name,discription,image} = val %>
+            <div class="blog">
+                <div class="blogImg">
+                    <img src="<%= image %>" width="250">
+                </div>
+                <div class="blogContain">
+                    <h3>
+                        <%= name %>
+                    </h3>
+                    <p>
+                        <%= discription %>
+                    </p>
+                    <a href="/DeleteBlog?id=<%=id%>"><button>Delete</button></a>
+                    <a href="/EditBlog?id=<%=id%>"><button>Edit</button></a>
+                </div>
+            </div>
+    <%})%>
+</div>
+<%- include('footer') %>

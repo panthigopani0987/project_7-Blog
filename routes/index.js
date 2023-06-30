@@ -6,17 +6,19 @@ const passport = require('passport');
 
 const fileupload = require('../config/fileupload');
 
+const Registercontroller = require('../controllers/RegisterController');
+
 const controller = require('../controllers/AdminController');
 
 routes.get('/',controller.login);
 
-routes.get('/register',controller.register);
+routes.get('/register',Registercontroller.register);
+
+routes.post('/registerData',Registercontroller.registerData);
 
 routes.get('/dashboard',passport.checkAuthentication,controller.dashboard);
 
 routes.get('/profile',passport.checkAuthentication,controller.profile);
-
-routes.post('/registerData',controller.registerData);
 
 routes.get('/logout',controller.logout);
 

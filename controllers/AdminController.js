@@ -1,4 +1,6 @@
-const blogtbl = require('../models/blogtbl')
+const blogtbl = require('../models/blogtbl');
+
+const Admintbl = require('../models/AdminTbl');
 
 const fs = require('fs')
 
@@ -164,7 +166,7 @@ const deletedata = async (req, res) => {
     catch (err) {
         if (err) {
             console.log(err);
-            return false
+            return false;
         }
     }
 }
@@ -180,13 +182,13 @@ const editdata = async (req, res) => {
         }
         else {
             console.log("Record Is Not Fetch");
-            return false
+            return false;
         }
     }
     catch (err) {
         if (err) {
             console.log(err);
-            return false
+            return false;
         }
     }
 }
@@ -195,8 +197,30 @@ const profile = (req, res) => {
     return res.render('profile');
 }
 
-const updateProfile = (req,res) =>{
-    
+const updateProfile = async(req,res) =>{
+    try{
+        const {updateId,name,email,password} = req.body;
+        let profileChange = await Admintbl.findById(updateId);
+        if(profileChange)
+        {
+            let updatedata = await Admintbl.findByIdAndUpdate(updateId,{
+                name : name,
+                email : email,
+                password : password
+            });
+            if(updatedata){
+                console.log("Successfully Update Your Profile");
+                return res.redirect('back');
+            }
+            else{
+                console.log('Not Update Your Profile');
+                return false;
+            }
+        }
+    }catch(err){
+        console.log(err);
+        return false;
+    }
 }
 module.exports = {
     login,

@@ -20,6 +20,8 @@ routes.get('/dashboard',passport.checkAuthentication,controller.dashboard);
 
 routes.get('/profile',passport.checkAuthentication,controller.profile);
 
+routes.post('/updateProfile',controller.updateProfile);
+
 routes.get('/logout',controller.logout);
 
 routes.post('/loginData',passport.authenticate('local',{failureRedirect : '/'}),controller.loginData);

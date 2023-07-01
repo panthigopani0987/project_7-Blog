@@ -18,6 +18,8 @@ const session = require('express-session');
 
 const passportLocal = require('./config/passport-local');
 
+const cookie = require('cookie-parser');
+
 app.use(session({
     secret : 'Blog_project',
     resave : true,
@@ -38,6 +40,8 @@ app.use(passport.setAuthentication);
 app.use('/',require('./routes'));
 
 app.set('view engine','ejs');
+
+app.use(cookie());
 
 app.listen(port,(err)=>{
     if(err){

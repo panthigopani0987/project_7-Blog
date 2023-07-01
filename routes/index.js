@@ -46,4 +46,6 @@ routes.get('/EditBlog',controller.editdata);
 
 routes.get('/ForgotPass',ForgotPassController.ForgotPass);
 
+routes.post('/forgotemail',ForgotPassController.forgotemail);
+
 module.exports = routes;

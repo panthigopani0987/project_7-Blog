@@ -5,9 +5,6 @@ const fs = require('fs')
 const dashboard = (req, res) => {
     return res.render('dashboard')
 }
-const profile = (req, res) => {
-    return res.render('profile')
-}
 
 const login = (req, res) => {
     if (res.locals.users) {
@@ -194,6 +191,13 @@ const editdata = async (req, res) => {
     }
 }
 
+const profile = (req, res) => {
+    return res.render('profile');
+}
+
+const updateProfile = (req,res) =>{
+    
+}
 module.exports = {
     login,
     logout,
@@ -205,4 +209,5 @@ module.exports = {
     editdata,
     deletedata,
     profile,
+    updateProfile,
 }

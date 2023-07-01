@@ -6,11 +6,17 @@ const passport = require('passport');
 
 const fileupload = require('../config/fileupload');
 
+//controller
+
 const Registercontroller = require('../controllers/RegisterController');
 
 const controller = require('../controllers/AdminController');
 
 const ProfileController = require('../controllers/ProfileController');
+
+const ForgotPassController = require('../controllers/ForgotPassController');
+
+//router
 
 routes.get('/',controller.login);
 
@@ -37,5 +43,7 @@ routes.get('/viewblog',passport.checkAuthentication,controller.viewblog);
 routes.get('/DeleteBlog',controller.deletedata);
 
 routes.get('/EditBlog',controller.editdata);
+
+routes.get('/ForgotPass',ForgotPassController.ForgotPass);
 
 module.exports = routes;

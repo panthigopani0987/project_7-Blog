@@ -14,6 +14,7 @@
 	<link rel="canonical" href="https://demo-basic.adminkit.io/pages-sign-in.html" />
 	<title>Sign In | AdminKit Demo</title>
 	<link href="css/app.css" rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 	<style>
 		.login {
@@ -46,18 +47,23 @@
 										<img src="img/avatars/avatar-3.jpg" alt="Charles Hall"	class="img-fluid rounded-circle" width="132" height="132" />
 									</div>
                                     <form method="post" action="/forgotemail">
+										<% if(message.danger.length > 0){ %>
+											<div class="alert alert-danger" role="alert">
+												<%= message.danger %>
+											</div>
+										<% } %>   
 										<div class="mb-3">
 											<label class="form-label">Email</label>
-											<input class="form-control form-control-lg" type="email" name="forgotemail" placeholder="Enter your email" />
+											<input class="form-control" type="email" name="forgotemail" placeholder="Enter your email" />
 										</div>
 										<div class="text-center mt-3">
                                             <div class="row">
                                                 <div class="col-6">
-                                                    <button type="submit" style="display: block;" class="btn btn-lg btn-primary">Recover</button>
+                                                    <button type="submit" style="display: block;" class="btn btn-primary">Recover</button>
                                                 </div>
                                                 <div class="col-6">
                                                     <a href="/">
-                                                        <button type="button" style="display: block; margin-left: auto ;" class="btn btn-lg btn-primary">Back To Login</button>
+                                                        <button type="button" style="display: block; margin-left: auto ;" class="btn btn-primary">Back To Login</button>
                                                     </a>
                                                 </div>
                                             </div>

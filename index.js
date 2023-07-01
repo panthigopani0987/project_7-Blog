@@ -20,6 +20,8 @@ const passportLocal = require('./config/passport-local');
 
 const cookie = require('cookie-parser');
 
+const flash = require('connect-flash');
+
 app.use(session({
     secret : 'Blog_project',
     resave : true,
@@ -38,6 +40,16 @@ app.use(passport.session());
 app.use(passport.setAuthentication);
 
 app.use(cookie());
+
+app.use(flash());
+
+app.use(function(req,res,next){
+    res.locals.message = {
+        'success' : req.flash('success'),
+        'danger' : req.flash('danger')
+    }
+    next();
+});
 
 app.use('/',require('./routes'));
 

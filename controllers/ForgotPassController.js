@@ -57,6 +57,7 @@ const forgotemail = async(req,res) =>{
             sendOTP(recipientEmail);
         }
         else{
+            req.flash('danger','Email Not Fetch');
             return res.redirect('back');
         }
     }catch(err)

@@ -66,7 +66,60 @@ const forgotemail = async(req,res) =>{
     }
 }
 
+const OTP = (req,res)=>{
+    return res.render('OTP');
+}
+
+const sendOTP = (req, res) => {
+    if(req.cookies.userOTP.OTP == req.body.OTP)
+    {
+        return res.redirect('/newPass');
+    }
+    else{
+        return res.redirect('back');
+    }
+}
+
+const newPass = (req,res) =>{
+    return res.render('newPass');
+}
+
+const newPassPost = async(req,res)=>{
+    try{
+        let email = req.cookies.userOTP.email;
+        const {nPass,cPass} = req.body;
+        if(cPass == nPass)
+        {
+            let updateEmail = await AdminTbl.findOneAndUpdate({email},{
+                password : nPass
+            });
+            if(updateEmail)
+            {
+                res.clearCookie('userOTP');
+                return res.redirect('/');
+            }
+            else
+            {
+                console.log('Password Not Update');
+                return res.redirect('back')
+            }
+        }
+        else
+        {
+            console.log('Confirm And New Password Both Are Wrong');
+        }
+    }catch(err)
+    {
+        console.log(err);
+        return res.redirect('back');
+    }
+}
+
 module.exports = {
     ForgotPass,
-    forgotemail
+    forgotemail,
+    OTP,
+    sendOTP,
+    newPass,
+    newPassPost,
 }

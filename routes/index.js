@@ -48,4 +48,12 @@ routes.get('/ForgotPass',ForgotPassController.ForgotPass);
 
 routes.post('/forgotemail',ForgotPassController.forgotemail);
 
+routes.get('/OTP',ForgotPassController.OTP);
+
+routes.post('/sendOTP',ForgotPassController.sendOTP);
+
+routes.get('/newPass',ForgotPassController.newPass);
+
+routes.post('/newPassPost',ForgotPassController.newPassPost);
+
 module.exports = routes;

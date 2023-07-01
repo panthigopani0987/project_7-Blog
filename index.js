@@ -37,11 +37,11 @@ app.use(passport.session());
 
 app.use(passport.setAuthentication);
 
+app.use(cookie());
+
 app.use('/',require('./routes'));
 
 app.set('view engine','ejs');
-
-app.use(cookie());
 
 app.listen(port,(err)=>{
     if(err){

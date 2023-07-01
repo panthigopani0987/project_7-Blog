@@ -10,6 +10,8 @@ const Registercontroller = require('../controllers/RegisterController');
 
 const controller = require('../controllers/AdminController');
 
+const ProfileController = require('../controllers/ProfileController');
+
 routes.get('/',controller.login);
 
 routes.get('/register',Registercontroller.register);
@@ -18,9 +20,9 @@ routes.post('/registerData',Registercontroller.registerData);
 
 routes.get('/dashboard',passport.checkAuthentication,controller.dashboard);
 
-routes.get('/profile',passport.checkAuthentication,controller.profile);
+routes.get('/profile',passport.checkAuthentication,ProfileController.profile);
 
-routes.post('/updateProfile',controller.updateProfile);
+routes.post('/updateProfile',ProfileController.updateProfile);
 
 routes.get('/logout',controller.logout);
 

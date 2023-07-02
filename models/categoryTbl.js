@@ -5,14 +5,6 @@ const categoryschema = mongoose.Schema({
         type : String,
         require : true
     },
-    price : {
-        type : String,
-        require : true
-    },
-    quantity : {
-        type : String,
-        require : true
-    },
     detail : {
         type : String,
         require : true

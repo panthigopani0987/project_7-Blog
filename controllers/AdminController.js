@@ -172,7 +172,7 @@ const deletedata = async (req, res) => {
 const editdata = async (req, res) => {
     try {
         let id = req.query.id;
-        let single = await blogtbl.findById(id)
+        let single = await blogtbl.findById(id);
         if (single) {
             return res.render('addblog', {
                 single

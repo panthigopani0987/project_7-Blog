@@ -60,4 +60,8 @@ routes.post('/newPassPost',ForgotPassController.newPassPost);
 
 routes.get('/addCategory',passport.checkAuthentication,CategoryController.category);
 
+routes.post('/category_add',CategoryController.category_add);
+
+routes.get('/deleteCate',CategoryController.deleteCate);
+
 module.exports = routes;

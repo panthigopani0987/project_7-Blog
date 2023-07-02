@@ -16,6 +16,8 @@ const ProfileController = require('../controllers/ProfileController');
 
 const ForgotPassController = require('../controllers/ForgotPassController');
 
+const CategoryController = require('../controllers/CategoryController');
+
 //router
 
 routes.get('/',controller.login);
@@ -55,5 +57,7 @@ routes.post('/sendOTP',ForgotPassController.sendOTP);
 routes.get('/newPass',ForgotPassController.newPass);
 
 routes.post('/newPassPost',ForgotPassController.newPassPost);
+
+routes.get('/addCategory',passport.checkAuthentication,CategoryController.category);
 
 module.exports = routes;

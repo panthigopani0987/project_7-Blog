@@ -64,4 +64,6 @@ routes.post('/category_add',CategoryController.category_add);
 
 routes.get('/deleteCate',CategoryController.deleteCate);
 
+routes.get('/updateCate',CategoryController.updateCate);
+
 module.exports = routes;

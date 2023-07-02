@@ -14,7 +14,7 @@
                     <div class="card-body">
                         <form action="/category_add" method="post">
                             <div class="mb-3">
-                                <input type="hidden" name="updateId">
+                                <input type="text" name="updateId">
                                 <label class="form-label">Phone Name</label>
                                 <select name="name" class="p-3 form-control">
                                     <option value="-- Select Phone Brand --">-- Select Phone Brand --</option>
@@ -69,7 +69,7 @@
                                         <a href="/deleteCate?id=<%= id %>"><button  class="btn btn-lg btn-primary">Delete</button></a>    
                                     </td>
                                     <td>
-                                        <a href="/updateCate>id=<%= id %>"><button  class="btn btn-lg btn-primary">Update</button></a>    
+                                        <a href="/updateCate?id=<%= id %>"><button  class="btn btn-lg btn-primary">Update</button></a>    
                                     </td>
                                 </tr>
                             <% }) %>

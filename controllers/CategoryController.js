@@ -66,9 +66,20 @@ const deleteCate = async(req,res)=>{
         return false;
     }
 }
+const updateCate = async(req,res) =>{
+    try{
+        let id = req.query.id;
+        console.log(id);
+    }catch(err)
+    {
+        console.log(err);
+        return false;
+    }
+}
 
 module.exports = {
     category,
     category_add,
     deleteCate,
+    updateCate
 }

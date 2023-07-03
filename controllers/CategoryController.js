@@ -6,7 +6,8 @@ const category = async(req,res)=>{
         if(cateData)
         {
             return res.render('addCategory',{
-                cateData
+                cateData,
+                singleData : "",
             });
         }
         else{
@@ -21,24 +22,52 @@ const category = async(req,res)=>{
 
 const category_add = async(req,res) =>{
     try{
-        const {name,detail} = req.body;
-        if(!name || !detail)
+        const {updateId,name,detail} = req.body;
+        if(updateId)
         {
-            console.log('Please Enter All Data in The Field');
-            return res.redirect('back');
-        }
-        let cate = await categoryTbl.create({
-            name : name,
-            detail : detail
-        });
-        if(cate)
-        {
-            console.log('Data Successfully Insert');
-            return res.redirect('/addCategory');
+            if(!name || !detail)
+            {
+                console.log('Please Enter All Data in The Field');
+                return res.redirect('back');
+            }
+            let singleData = await categoryTbl.findById(updateId);
+            if(singleData)
+            {
+                let updateData = await categoryTbl.findByIdAndUpdate(updateId,{
+                    name : name,
+                    detail : detail
+                });
+                if(updateData)
+                {
+                    console.log(('Data Is Update'));
+                    return res.redirect('/addCategory');
+                }
+                else
+                {
+                    console.log('Data Is Update');
+                    return false;
+                }
+            }
         }
         else{
-            console.log(err);
-            return res.redirect('back');
+            if(!name || !detail)
+            {
+                console.log('Please Enter All Data in The Field');
+                return res.redirect('back');
+            }
+            let cate = await categoryTbl.create({
+                name : name,
+                detail : detail
+            });
+            if(cate)
+            {
+                console.log('Data Successfully Insert');
+                return res.redirect('/addCategory');
+            }
+            else{
+                console.log(err);
+                return res.redirect('back');
+            }
         }
     }catch(err)
     {
@@ -54,7 +83,7 @@ const deleteCate = async(req,res)=>{
         if(cateDelt)
         {
             console.log('Category Is Successfully Delete');
-            return res.redirect('back');
+            return res.redirect('/addCategory');
         }
         else{
             console.log('Category Is Not Remove');
@@ -69,7 +98,19 @@ const deleteCate = async(req,res)=>{
 const updateCate = async(req,res) =>{
     try{
         let id = req.query.id;
-        console.log(id);
+        let singleData = await categoryTbl.findById(id);
+        let AllData = await categoryTbl.find({});
+        if(singleData)
+        {
+            return res.render('addCategory',{
+                singleData,
+                cateData : AllData
+            });
+        }
+        else{
+            console.log('Record Is Not Fetch');
+            return false;
+        }
     }catch(err)
     {
         console.log(err);

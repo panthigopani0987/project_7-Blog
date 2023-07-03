@@ -14,23 +14,27 @@
                     <div class="card-body">
                         <form action="/category_add" method="post">
                             <div class="mb-3">
-                                <input type="text" name="updateId">
+                                <input type="hidden" name="updateId" value="<%= singleData.id %>">
                                 <label class="form-label">Phone Name</label>
                                 <select name="name" class="p-3 form-control">
                                     <option value="-- Select Phone Brand --">-- Select Phone Brand --</option>
                                     <% let pname = ['iPhone','Samsung','OPPO','Vivo','Xiaomi','Nokia','OnePlus','Realme','Motorola','Google'];
                                     for(let i in pname)
                                     { %>
-                                        <option value="<%= pname[i] %>"><%= pname[i] %> </option>
+                                        <option value="<%= pname[i] %>" <% if(singleData.name == pname[i]){ %> selected <% } %>><%= pname[i] %> </option>
                                     <% } %>
                                 </select>
                             </div>                                    
                             <div class="mb-3">
                                 <label class="form-label">Phone Details</label>
-                                <input type="text" name="detail" class="p-3 form-control" placeholder="Enter Selected Phone Detail">  
+                                <input type="text" name="detail" value="<%= singleData.detail %>" class="p-3 form-control" placeholder="Enter Selected Phone Detail">  
                             </div>
                             <div class="mt-3">
+                                <% if(singleData) { %>
+                                <button type="submit" class="btn btn-lg btn-primary">Update Product</button>
+                                <% } else { %>
                                 <button type="submit" class="btn btn-lg btn-primary">Add Product</button>
+                                <% } %>
                             </div>
                         </form>
                     </div>

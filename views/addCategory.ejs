@@ -16,18 +16,7 @@
                             <div class="mb-3">
                                 <input type="hidden" name="updateId" value="<%= singleData.id %>">
                                 <label class="form-label">Phone Name</label>
-                                <select name="name" class="p-3 form-control">
-                                    <option value="-- Select Phone Brand --">-- Select Phone Brand --</option>
-                                    <% let pname = ['iPhone','Samsung','OPPO','Vivo','Xiaomi','Nokia','OnePlus','Realme','Motorola','Google'];
-                                    for(let i in pname)
-                                    { %>
-                                        <option value="<%= pname[i] %>" <% if(singleData.name == pname[i]){ %> selected <% } %>><%= pname[i] %> </option>
-                                    <% } %>
-                                </select>
-                            </div>                                    
-                            <div class="mb-3">
-                                <label class="form-label">Phone Details</label>
-                                <input type="text" name="detail" value="<%= singleData.detail %>" class="p-3 form-control" placeholder="Enter Selected Phone Detail">  
+                                <input type="text" name="name" value="<%= singleData.name %>" class="p-3 form-control" placeholder="Enter Category"> 
                             </div>
                             <div class="mt-3">
                                 <% if(singleData) { %>
@@ -54,9 +43,6 @@
                                     Name
                                 </td>
                                 <td>
-                                    Details
-                                </td>
-                                <td>
                                     Delete
                                 </td>
                                 <td>
@@ -64,11 +50,10 @@
                                 </td>
                             </tr>
                             <% cateData.map((val)=>{
-                                const {id,name,detail} = val;
+                                const {id,name} = val;
                             %>
                                 <tr>
                                     <td><%= name %></td>
-                                    <td><%= detail %></td>
                                     <td>
                                         <a href="/deleteCate?id=<%= id %>"><button  class="btn btn-lg btn-primary">Delete</button></a>    
                                     </td>

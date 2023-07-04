@@ -22,10 +22,10 @@ const category = async(req,res)=>{
 
 const category_add = async(req,res) =>{
     try{
-        const {updateId,name,detail} = req.body;
+        const {updateId,name} = req.body;
         if(updateId)
         {
-            if(!name || !detail)
+            if(!name)
             {
                 console.log('Please Enter All Data in The Field');
                 return res.redirect('back');
@@ -35,7 +35,6 @@ const category_add = async(req,res) =>{
             {
                 let updateData = await categoryTbl.findByIdAndUpdate(updateId,{
                     name : name,
-                    detail : detail
                 });
                 if(updateData)
                 {
@@ -50,14 +49,13 @@ const category_add = async(req,res) =>{
             }
         }
         else{
-            if(!name || !detail)
+            if(!name)
             {
                 console.log('Please Enter All Data in The Field');
                 return res.redirect('back');
             }
             let cate = await categoryTbl.create({
                 name : name,
-                detail : detail
             });
             if(cate)
             {

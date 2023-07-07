@@ -18,6 +18,8 @@ const ForgotPassController = require('../controllers/ForgotPassController');
 
 const CategoryController = require('../controllers/CategoryController');
 
+const SubCategoryController = require('../controllers/SubCategoryController');
+
 //router
 
 routes.get('/',controller.login);
@@ -65,5 +67,9 @@ routes.post('/category_add',CategoryController.category_add);
 routes.get('/deleteCate',CategoryController.deleteCate);
 
 routes.get('/updateCate',CategoryController.updateCate);
+
+routes.get('/add_SubCategory',passport.checkAuthentication,SubCategoryController.add_SubCategory);
+
+routes.post('/postSubcategory',SubCategoryController.postSubcategory);
 
 module.exports = routes;

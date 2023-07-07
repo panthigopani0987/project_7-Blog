@@ -3,26 +3,26 @@
 <main class="content">
     <div class="container-fluid p-0">
         <div class="mb-3">
-            <h1 class="h3 d-inline align-middle"> Phone</h1>
+            <h1 class="h3 d-inline align-middle">Category</h1>
         </div>
         <div class="row">
             <div class="col-12 col-lg-8">
                 <div class="card">
                     <div class="card-header  bg-primary">
-                        <h5 class="card-title mb-0" style="color: white;">Select Phone</h5>
+                        <h5 class="card-title mb-0" style="color: white;">Select Category</h5>
                     </div>
                     <div class="card-body">
                         <form action="/category_add" method="post">
                             <div class="mb-3">
                                 <input type="hidden" name="updateId" value="<%= singleData.id %>">
-                                <label class="form-label">Phone Name</label>
+                                <label class="form-label">Category Name</label>
                                 <input type="text" name="name" value="<%= singleData.name %>" class="p-3 form-control" placeholder="Enter Category"> 
                             </div>
                             <div class="mt-3">
                                 <% if(singleData) { %>
-                                <button type="submit" class="btn btn-lg btn-primary">Update Product</button>
+                                <button type="submit" class="btn btn-lg btn-primary">Update Category</button>
                                 <% } else { %>
-                                <button type="submit" class="btn btn-lg btn-primary">Add Product</button>
+                                <button type="submit" class="btn btn-lg btn-primary">Add Category</button>
                                 <% } %>
                             </div>
                         </form>
@@ -34,7 +34,7 @@
             <div class="col-12 col-lg-8">
                 <div class="card">
                     <div class="card-header  bg-primary">
-                        <h5 class="card-title mb-0" style="color: white;">View Your Product Here</h5>
+                        <h5 class="card-title mb-0" style="color: white;">View Your Category Here</h5>
                     </div>
                     <div class="card-body">
                         <table class="table">

@@ -68,10 +68,18 @@
                                     <td><%= val.categoryId.name %></td>
                                     <td><%= val.subcategory %></td>
                                     <td>
-                                        <a href=""><button  class="btn btn-lg btn-primary">Delete</button></a>    
+                                        <a href="">
+                                            <button class="btn btn-lg btn-primary">
+                                                <i class="align-middle" data-feather="trash-2"></i> 
+                                            </button>
+                                        </a>
                                     </td>
                                     <td>
-                                        <a href=""><button  class="btn btn-lg btn-primary">Update</button></a>    
+                                        <a href="/updateSubCate?id=<%= val.id %>">
+                                            <button class="btn btn-lg btn-primary">
+                                                <i class="align-middle" data-feather="edit"></i> 
+                                            </button>
+                                        </a>
                                     </td>
                                 </tr>
                             <% }) %>

@@ -40,7 +40,52 @@ const postSubcategory = async(req,res)=>{
     }
 }
 
+const updateSubCate = async(req,res)=>{
+    try {
+        
+        let id = req.query.id;
+        let category = await categoryTbl.find({});
+
+        let subcategoryupdate = await subcategoryTbl.findById(id).populate('categoryId');
+        
+        return res.render('subcateupdate',{
+            singleSubData : subcategoryupdate, 
+            category
+        })
+
+    } catch (error) {
+        console.log(error);
+        return false;
+    }
+}
+
+const postupdateSubcategory = async(req,res) => {
+
+    try{
+        const {updateId,subcategory} = req.body
+        let updateData = await subcategoryTbl.findByIdAndUpdate(updateId,{
+            subcategory :subcategory,
+        })
+        if(updateData)
+        {
+            console.log('Sub Category Update');
+            return res.redirect('/add_SubCategory');
+        }
+        else{
+            console.log('Sub Category Not Update');
+            return false;
+        }
+    }catch(err)
+    {
+        console.log(err);
+        return false;
+    }
+
+}
+
 module.exports = {
     add_SubCategory,
-    postSubcategory
+    postSubcategory,
+    updateSubCate,
+    postupdateSubcategory
 }

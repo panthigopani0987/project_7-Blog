@@ -78,7 +78,7 @@ routes.post('/newPassPost',ForgotPassController.newPassPost);
 
 routes.get('/addCategory',passport.checkAuthentication,CategoryController.category);
 
-routes.post('/category_add',CategoryController.category_add);
+routes.post('/category_add',passport.checkAuthentication,CategoryController.category_add);
 
 routes.get('/deleteCate',CategoryController.deleteCate);
 
@@ -88,12 +88,20 @@ routes.get('/updateCate',CategoryController.updateCate);
 
 routes.get('/add_SubCategory',passport.checkAuthentication,SubCategoryController.add_SubCategory);
 
-routes.post('/postSubcategory',SubCategoryController.postSubcategory);
+routes.post('/postSubcategory',passport.checkAuthentication,SubCategoryController.postSubcategory);
+
+routes.get('/updateSubCate',passport.checkAuthentication,SubCategoryController.updateSubCate);
+
+routes.post('/postupdateSubcategory',passport.checkAuthentication,SubCategoryController.postupdateSubcategory);
 
 //extra sub category
 
 routes.get('/ExSubCategory',passport.checkAuthentication,ExSubCategoryController.ExSubCategory);
 
-routes.post('/postExSubcategory',ExSubCategoryController.postExSubcategory);
+routes.post('/postExSubcategory',passport.checkAuthentication,ExSubCategoryController.postExSubcategory);
+
+routes.get('/updateExSubCate',passport.checkAuthentication,ExSubCategoryController.updateExSubCate);
+
+routes.post('/postExSubcateUpdate',passport.checkAuthentication,ExSubCategoryController.postExSubcateUpdate);
 
 module.exports = routes;

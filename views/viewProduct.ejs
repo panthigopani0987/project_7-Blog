@@ -1,0 +1,53 @@
+<%- include('header') %>
+<style>
+    .card-title{
+        color: black;
+        font-size: 20px;
+    }
+</style>
+
+<% productdata.map((val)=>{  %>
+    <div class="card m-3" style="max-width: 75%; max-height: 250px;">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="<%= val.image %>" class="img-fluid rounded-start" alt="..." style="width: 350px; height: 250px;object-fit: cover;">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-6">
+                            <h5 class="card-title"><%= val.pName %></h5>
+                        </div>
+                        <div class="col-6">
+                            <p class="card-text" style="text-align: right;color: black;">$ <%= val.pPrice  %>.00</p>
+                        </div>
+                    </div>
+                    <span class="card-text"><small class="text-body-secondary">Quantity : <%= val.pQty %></small></span><br><br>
+                    <div class="row">
+                        <div class="col-6">
+                            <p style="color: black;">Category : <%= val.categoryId.name %></p>
+                        </div>
+                        <div class="col-6">
+                            <p style="text-align: right;color: black;">Model : <%= val.exsubcategoryId.exsubcategory %></p>
+                        </div>
+                    </div>
+                    <p class="card-text"> <%= val.pDesc %></p>
+                    <div class="row">
+                        <div class="col-6">
+                            <a href="/deleteProduct?id=<%= val.id%>">
+                                <button type="submit" class="btn btn-lg btn-primary">Delete</button>
+                            </a>
+                        </div>
+                        <div class="col-6">
+                            <a href="/updateProduct?id=<%= val.id%>">
+                                <button type="submit" class="btn btn-lg btn-primary" style="margin-left: auto; display: block;">Update</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<% }) %>
+
+    <%- include('footer') %>

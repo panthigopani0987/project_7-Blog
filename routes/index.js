@@ -22,6 +22,8 @@ const SubCategoryController = require('../controllers/SubCategoryController');
 
 const ExSubCategoryController = require('../controllers/ExtraSubCategoryController');
 
+const ProductController = require('../controllers/ProductController');
+
 //router
 
 //register
@@ -88,20 +90,32 @@ routes.get('/updateCate',CategoryController.updateCate);
 
 routes.get('/add_SubCategory',passport.checkAuthentication,SubCategoryController.add_SubCategory);
 
-routes.post('/postSubcategory',passport.checkAuthentication,SubCategoryController.postSubcategory);
+routes.post('/postSubcategory',SubCategoryController.postSubcategory);
 
-routes.get('/updateSubCate',passport.checkAuthentication,SubCategoryController.updateSubCate);
+routes.get('/updateSubCate',SubCategoryController.updateSubCate);
 
-routes.post('/postupdateSubcategory',passport.checkAuthentication,SubCategoryController.postupdateSubcategory);
+routes.post('/postupdateSubcategory',SubCategoryController.postupdateSubcategory);
 
 //extra sub category
 
 routes.get('/ExSubCategory',passport.checkAuthentication,ExSubCategoryController.ExSubCategory);
 
-routes.post('/postExSubcategory',passport.checkAuthentication,ExSubCategoryController.postExSubcategory);
+routes.post('/postExSubcategory',ExSubCategoryController.postExSubcategory);
 
-routes.get('/updateExSubCate',passport.checkAuthentication,ExSubCategoryController.updateExSubCate);
+routes.get('/updateExSubCate',ExSubCategoryController.updateExSubCate);
 
-routes.post('/postExSubcateUpdate',passport.checkAuthentication,ExSubCategoryController.postExSubcateUpdate);
+routes.post('/postExSubcateUpdate',ExSubCategoryController.postExSubcateUpdate);
+
+//product
+
+routes.get('/product',passport.checkAuthentication,ProductController.product);
+
+routes.post('/productdata',fileupload,ProductController.productdata);
+
+routes.get('/viewProduct',passport.checkAuthentication,ProductController.viewProduct);
+
+routes.get('/deleteProduct',ProductController.deleteProduct);
+
+routes.get('/updateProduct',ProductController.updateProduct);
 
 module.exports = routes;

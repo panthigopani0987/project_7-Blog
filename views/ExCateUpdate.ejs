@@ -29,7 +29,7 @@
                                 </div> 
                                 <div class="mb-3">
                                     <label class="form-label">Sub Category</label>
-                                    <select name="subcategory" class="p-3 form-control" di>
+                                    <select name="subcategory" class="p-3 form-control" disabled>
                                         <option value="">-- Select Sub Category --</option>
                                         <% subcategory.map((val)=>{ %>
                                             <option <% if(singleData.subCategoryId.id == val.id) { %> selected <% } %> value="<%= val.id %>">

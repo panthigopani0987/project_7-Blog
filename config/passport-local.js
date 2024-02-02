@@ -7,7 +7,7 @@ const passportLocal = require('passport-local').Strategy;
 passport.use(new passportLocal({
     usernameField : 'email'
 },async(email,password,done)=>{
-    try {
+        try {   
         let user = await usertbl.findOne({email : email});
         if(!user || user.password != password){
             console.log("Email And Password Are Wrong");

@@ -2,7 +2,7 @@ const blogtbl = require('../models/blogtbl');
 
 const fs = require('fs')
 
-const dashboard = (req, res) => {
+const dashboard = (req, res) => {       
     return res.render('dashboard')
 }
 

@@ -74,6 +74,7 @@ const OTP = (req,res)=>{
 const sendOTP = (req, res) => {
     if(req.cookies.userOTP.OTP == req.body.OTP)
     {
+        console.log('Done');
         return res.redirect('/newPass');
     }
     else{
